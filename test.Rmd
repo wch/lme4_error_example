@@ -1,0 +1,29 @@
+---
+title: "test"
+output: html_document
+date: "2023-06-17"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message=FALSE}
+library(lme4)
+library(lmerTest)
+sessionInfo()
+```
+
+```{r, error=TRUE, supp}
+df <- read.csv("test.csv", header = TRUE)
+
+model <- lmer(y ~ a + b + c + (1 | d/e), data = df)
+
+model
+
+summary(model)
+
+confint(model)
+```
